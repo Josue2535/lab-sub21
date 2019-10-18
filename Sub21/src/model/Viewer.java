@@ -10,7 +10,7 @@ public class Viewer extends Person{
 	private Viewer right;
 	private Viewer left;
 	public Viewer(String name, String lastName, String id, String email, String gender, String contry, String photo,
-			Date birthday) {
+			String birthday) {
 		super(name, lastName, id, email, gender, contry, photo, birthday);
 		this.left = null;
 		this.right = null;

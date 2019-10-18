@@ -15,9 +15,8 @@ class CompetitorTest {
 	private Competitor c2;
 	
 	public void setupStage() {
-		Date d1 = new Date();
-		c1 = new Competitor("josue", "rodriguez", "1005969243", "rojopi@", "M", "colombia", "", d1);
-		c2 = new Competitor("josue", "rodriguez", "2005625", "rojopi@", "M", "colombia", "", d1); 
+		c1 = new Competitor("josue", "rodriguez", "1005969243", "rojopi@", "M", "colombia", "", "");
+		c2 = new Competitor("josue", "rodriguez", "2005625", "rojopi@", "M", "colombia", "", ""); 
 	}
 	@Test
 	void Addtest() throws IdAlreadyExistException {

@@ -23,7 +23,6 @@ public class Main {
 		int userInput = 0;
 
 		co = new Controller();
-		co.read();
 		System.out.println("");
 		System.out.println("");
 
@@ -46,15 +45,15 @@ public class Main {
 				switch (userInput) {
 
 				case 1:
-					
+					loadData();
 					break;
 
 				case 2:
-					
+					searchViewer();
 					break;
 
 				case 3:
-					
+					searchCompetitor();
 					break;
 
 				case 4:
@@ -92,6 +91,39 @@ public class Main {
 		System.out.println("4. Visualize the data of the two \n   structures of a given country.");
 		System.out.println("5. CHAU ");
 		System.out.println("----------------------------------------- \n");
+	}
+	
+	public void loadData() {
+		System.out.println("please enter the relative path \n");
+		String ms = reader.nextLine();
+		co.read(ms);
+		if(co.getFirst() != null) {
+			System.out.println("the data was loaded correctly");
+		}else {
+			System.out.println("the data was not loaded");
+		}
+	}
+	
+	public void searchViewer() {
+		System.out.println("please enter the id of the viewer \n");
+		String ms = reader.nextLine();
+		long TInicio, TFin, tiempo;
+		TInicio = System.currentTimeMillis();
+		String viewer = co.searchViewer(ms).toString();
+		TFin = System.currentTimeMillis();
+		tiempo = TFin-TInicio;
+		System.out.println("the viewer's information is " + viewer + "and it took time to find: " + tiempo);;
+	}
+	
+	public void searchCompetitor() {
+		System.out.println("please enter the id of the competitor \n");
+		String ms = reader.nextLine();
+		long TInicio, TFin, tiempo;
+		TInicio = System.currentTimeMillis();
+		String competitor = co.searchCompetitor(ms).toString();
+		TFin = System.currentTimeMillis();
+		tiempo = TFin-TInicio;
+		System.out.println("the viewer's information is " + competitor + "and it took time to find: " + tiempo);;
 	}
 
 }

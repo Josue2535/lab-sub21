@@ -14,9 +14,9 @@ class ViewerTest {
 	private Viewer w2;
 	
 	public void setupStage() {
-		Date d1 = new Date();
-		w1 = new Viewer("josue", "rodriguez", "1005969243", "rojopi@", "M", "colombia", "", d1);
-		w2 = new Viewer("josue", "rodriguez", "2005625", "rojopi@", "M", "colombia", "", d1); 
+		
+		w1 = new Viewer("josue", "rodriguez", "1005969243", "rojopi@", "M", "colombia", "", "");
+		w2 = new Viewer("josue", "rodriguez", "2005625", "rojopi@", "M", "colombia", "", ""); 
 	}
 	@Test
 	void Addtest() throws IdAlreadyExistException {

@@ -9,7 +9,7 @@ public class Competitor extends Person {
 	private Competitor before;
 
 	public Competitor(String name, String lastName, String id, String email, String gender, String contry, String photo,
-			Date birthday) {
+			String birthday) {
 		super(name, lastName, id, email, gender, contry, photo, birthday);
 		this.before = null;
 		this.next = null;

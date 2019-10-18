@@ -10,10 +10,10 @@ public class Person implements Comparable<Object>{
 	private String gender;
 	private String contry;
 	private String photo;
-	private Date birthday;
+	private String birthday;
 
 	public Person(String name, String lastName, String id, String email, String gender, String contry, String photo,
-			Date birthday) {
+			String birthday) {
 		this.name = name;
 		this.lastName = lastName;
 		this.id = id;
@@ -80,11 +80,11 @@ public class Person implements Comparable<Object>{
 		this.photo = photo;
 	}
 
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(Date birthday) {
+	public void setBirthday(String birthday) {
 		this.birthday = birthday;
 	}
 	
@@ -98,5 +98,11 @@ public class Person implements Comparable<Object>{
 			i = 1;
 		}
 		return i;
+	}
+
+	@Override
+	public String toString() {
+		return "Person [name=" + name + ", lastName=" + lastName + ", id=" + id + ", email=" + email + ", gender="
+				+ gender + ", contry=" + contry + ", birthday=" + birthday + "]";
 	}
 }
