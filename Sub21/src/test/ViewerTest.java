@@ -24,5 +24,10 @@ class ViewerTest {
 		w1.addViewer(w2);
 		assertTrue(w1.searchViewer("2005625")== w2);
 	}
+	@Test
+	void searchTest() {
+		setupStage();
+		assertTrue(w1.searchViewer("2005625")== null);
+	}
 
 }

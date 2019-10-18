@@ -62,7 +62,7 @@ public class Main {
 					
 					break;
 				case 5:
-					co.write();
+					
 					break;
 
 				default:

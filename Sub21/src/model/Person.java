@@ -91,6 +91,12 @@ public class Person implements Comparable<Object>{
 	@Override
 	public int compareTo(Object o) {
 		Person ot = (Person) o;
-		return getId().compareToIgnoreCase(ot.getId());
+		int i = getId().compareToIgnoreCase(ot.getId());
+		if(i<0) {
+			i = -1;
+		}if(i>0) {
+			i = 1;
+		}
+		return i;
 	}
 }

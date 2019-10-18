@@ -22,7 +22,23 @@ public class Controller {
 	public void read() {
 		
 	}
-	public void write() {
-		
+	
+	public Viewer searchViewer(String id) {
+		Viewer tem = null;
+		if(root == null) {
+			
+		}else {
+			tem = root.searchViewer(id);
+		}
+		return tem;
 	}
+	
+	public Competitor searchCompetitor(String id) {
+		Competitor tem = null;
+		if(first !=null) {
+			tem = first.searchCompetitor(id);
+		}
+		return tem;
+	}
+	
 }
