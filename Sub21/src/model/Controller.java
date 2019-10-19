@@ -68,7 +68,7 @@ public class Controller {
 
 					}
 				} catch (Exception e) {
-					
+
 				}
 			}
 		}
@@ -95,61 +95,72 @@ public class Controller {
 
 	public void addViewer(String name, String lastName, String id, String email, String gender, String contry,
 			String photo, String birthday) throws IdAlreadyExistException {
+		try {
+			Viewer v = new Viewer(name, lastName, id, email, gender, contry, photo, birthday);
+			if (root == null) {
+				root = v;
+			} else {
+				root.addViewer(v);
+			}
+		} catch (Exception e) {
 
-		Viewer v = new Viewer(name, lastName, id, email, gender, contry, photo, birthday);
-		if (root == null) {
-			root = v;
-		} else {
-			root.addViewer(v);
 		}
 
 	}
 
 	public void addCompetitor(String name, String lastName, String id, String email, String gender, String contry,
-			String photo, String birthday) throws IdAlreadyExistException {
+			String photo, String birthday) {
+		try {
+			Competitor v = new Competitor(name, lastName, id, email, gender, contry, photo, birthday);
+			if (first == null) {
+				first = v;
+			} else {
+				first.addCompetitor(v);
+			}
+		} catch (Exception e) {
 
-		Competitor v = new Competitor(name, lastName, id, email, gender, contry, photo, birthday);
-		if (first == null) {
-			first = v;
-		} else {
-			first.addCompetitor(v);
 		}
 
 	}
-	
-	public String searchCountry(String country) throws IdAlreadyExistException {
+
+	public String searchCountry(String country) {
 		String ms = "";
 		Viewer tem = searchCountryPro(country);
-		if(tem != null) {
+		if (tem != null) {
 			ms += tem.paintTree();
-		}else {
+		} else {
 			ms += "there are no people from that country";
 		}
-		
+
 		return ms;
 	}
-	
-	public Viewer searchCountryPro(String country) throws IdAlreadyExistException {
+
+	public Viewer searchCountryPro(String country) {
 		Viewer tem = null;
-		if(root!=null) {
-			if(root.searchCountry(country)!= null) {
-				tem = root.searchCountry(country);
-			}
-		}
-		if(first!= null) {
-			if(first.searchCountry(country)!=null) {
-				Competitor tem1 = first.searchCountry(country);
-				while (tem1!=null) {
-					Viewer w = new Viewer(tem1.getName(), tem1.getLastName(), tem1.getId(), tem1.getEmail(), tem1.getGender(), tem1.getContry(), tem1.getPhoto(), tem1.getBirthday());
-					
-					if(tem == null) {
-						tem = w;
-					}else {
-						tem.addViewer(w);
-					}
-					tem1 = tem1.getNext();
+		try {
+			if (root != null) {
+				if (root.searchCountry(country) != null) {
+					tem = root.searchCountry(country);
 				}
 			}
+			if (first != null) {
+				if (first.searchCountry(country) != null) {
+					Competitor tem1 = first.searchCountry(country);
+					while (tem1 != null) {
+						Viewer w = new Viewer(tem1.getName(), tem1.getLastName(), tem1.getId(), tem1.getEmail(),
+								tem1.getGender(), tem1.getContry(), tem1.getPhoto(), tem1.getBirthday());
+
+						if (tem == null) {
+							tem = w;
+						} else {
+							tem.addViewer(w);
+						}
+						tem1 = tem1.getNext();
+					}
+				}
+			}
+		} catch (Exception e) {
+
 		}
 		return tem;
 	}
