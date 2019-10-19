@@ -50,4 +50,10 @@ class ControllerTest {
 		
 		assertTrue(c1.getRoot() != null);
 	}
+	@Test
+	void painTest() throws IdAlreadyExistException {
+		setupStage2();
+		c1.read("./reader/MOCK_DATA (1).csv");
+		assertTrue((c1.searchCountry("colombia").equals("there are no people from that country")));
+	}
 }

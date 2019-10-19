@@ -7,6 +7,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.swing.text.View;
+
 import exceptions.IdAlreadyExistException;
 
 public class Controller {
@@ -66,7 +68,7 @@ public class Controller {
 
 					}
 				} catch (Exception e) {
-					e.getStackTrace();
+					
 				}
 			}
 		}
@@ -113,5 +115,42 @@ public class Controller {
 			first.addCompetitor(v);
 		}
 
+	}
+	
+	public String searchCountry(String country) throws IdAlreadyExistException {
+		String ms = "";
+		Viewer tem = searchCountryPro(country);
+		if(tem != null) {
+			ms += tem.paintTree();
+		}else {
+			ms += "there are no people from that country";
+		}
+		
+		return ms;
+	}
+	
+	public Viewer searchCountryPro(String country) throws IdAlreadyExistException {
+		Viewer tem = null;
+		if(root!=null) {
+			if(root.searchCountry(country)!= null) {
+				tem = root.searchCountry(country);
+			}
+		}
+		if(first!= null) {
+			if(first.searchCountry(country)!=null) {
+				Competitor tem1 = first.searchCountry(country);
+				while (tem1!=null) {
+					Viewer w = new Viewer(tem1.getName(), tem1.getLastName(), tem1.getId(), tem1.getEmail(), tem1.getGender(), tem1.getContry(), tem1.getPhoto(), tem1.getBirthday());
+					
+					if(tem == null) {
+						tem = w;
+					}else {
+						tem.addViewer(w);
+					}
+					tem1 = tem1.getNext();
+				}
+			}
+		}
+		return tem;
 	}
 }

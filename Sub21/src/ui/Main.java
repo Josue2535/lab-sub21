@@ -125,5 +125,15 @@ public class Main {
 		tiempo = TFin-TInicio;
 		System.out.println("the viewer's information is " + competitor + "and it took time to find: " + tiempo);;
 	}
+	
+	public void searchCountry() {
+		System.out.println("please enter the country you want to search");
+		String ms = reader.nextLine();
+		try {
+		System.out.println(co.searchCountry(ms));
+		}catch (Exception e) {
+			System.out.println("the loaded data had some fault");
+		}
+	}
 
 }

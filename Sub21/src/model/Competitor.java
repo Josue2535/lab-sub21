@@ -32,18 +32,22 @@ public class Competitor extends Person {
 	}
 
 	public void addCompetitor(Competitor ne) throws IdAlreadyExistException {
-		if (compareTo(ne) == 0) {
-			throw new IdAlreadyExistException("it`s already exist");
-		}
-		if (compareTo(ne) < 0) {
-			if (next == null) {
-				addNext(ne);
-			} else {
-				next.addCompetitor(ne);
+		if (ne != null) {
+			if (compareTo(ne) == 0) {
+				throw new IdAlreadyExistException("it`s already exist");
 			}
-		}
-		if (compareTo(ne) > 0) {
-			addBefore(ne);
+			if (compareTo(ne) < 0) {
+				if (next == null) {
+					addNext(ne);
+				} else {
+					next.addCompetitor(ne);
+				}
+			}
+			if (compareTo(ne) > 0) {
+				addBefore(ne);
+			}
+		} else {
+
 		}
 
 	}
@@ -73,12 +77,27 @@ public class Competitor extends Person {
 		Competitor tem = this;
 		boolean ce = false;
 		while (tem != null && !ce) {
-			if(tem.getId().equalsIgnoreCase(id)) {
+			if (tem.getId().equalsIgnoreCase(id)) {
 				ce = true;
-			}else {
+			} else {
 				tem = tem.getNext();
 			}
-			
+
+		}
+		return tem;
+	}
+
+	public Competitor searchCountry(String country) throws IdAlreadyExistException {
+		Competitor tem = null;
+		if (getContry().equalsIgnoreCase(country)) {
+			tem = this;
+		}
+		if (next != null) {
+			if(tem != null) {
+			tem.addCompetitor(next.searchCountry(country));
+			}else {
+				tem = next.searchCountry(country);
+			}
 		}
 		return tem;
 	}
